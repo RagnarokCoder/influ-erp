@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue: #0071e3;
+  --color-blue-link: #0066cc;
+  --color-blue-signal: #2997ff;
+  --color-carbon: #1d1d1f;
+  --color-onyx: #000000;
+  --color-smoke: #333333;
+  --color-graphite: #474747;
+  --color-ash: #707070;
+  --color-mist: #858585;
+  --color-frost: #f5f5f7;
+  --color-ice: #f4f8fb;
+  --color-haze: #fafafb;        /* hover de fila de tabla */
+  --color-pebble: #e2e2e5;
+  --color-white: #ffffff;
+  --color-hairline: #d2d2d7;
+  --color-success: #1f8a5b;
+  --color-success-wash: #eaf5ef;
+  --color-warning: #b25e09;
+  --color-warning-wash: #fbf1e5;
+  --color-danger: #c4322b;
+  --color-danger-wash: #fbeceb;
+
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-text: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --font-size-caption: 12px;
+  --font-size-body-sm: 14px;
+  --font-size-body: 17px;
+  --font-size-subhead: 21px;
+  --font-size-head-sm: 28px;
+  --font-size-head: 32px;
+  --font-size-display: 44px;
+
+  --radius-card: 8px;
+  --radius-pill: 980px;
+}
+
+/* En una capa: así las utilidades (text-blue-link en un enlace) ganan sobre la base. */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #f5f5f7; color: #1d1d1f; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+  a { text-decoration: none; color: inherit; }
+  h1,h2,h3,h4,p { margin: 0; }
+}

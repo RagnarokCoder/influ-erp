@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Influ · Cobra tus colaboraciones en 48 horas</title>
+<meta name="description" content="Influ adelanta el pago de las colaboraciones que ya cerraste con una marca. Recibe el 80% en 24–48 horas, sin cambiar cómo negocias." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%230b1530'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%2338e0b4'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --noche: #0b1530;
+    --noche-2: #121f45;
+    --menta: #38e0b4;
+    --menta-2: #1fb892;
+    --lila: #8b7bff;
+    --coral: #ff7a59;
+    --sol: #ffd166;
+    --tinta: #0b1530;
+    --gris: #5b6480;
+    --nube: #f4f6fb;
+    --blanco: #ffffff;
+    --radio: 22px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'Inter', system-ui, sans-serif; color: var(--tinta); background: var(--blanco); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  main { overflow-x: clip; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', 'Inter', sans-serif; margin: 0; letter-spacing: -0.02em; }
+  p { margin: 0; }
+  .envoltura { width: min(1180px, 100% - 40px); margin-inline: auto; }
+
+  /* Botones */
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font-weight: 600; font-size: 15px; transition: transform .2s ease, box-shadow .2s ease, background .2s; cursor: pointer; border: 0; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-menta { background: var(--menta); color: var(--noche); box-shadow: 0 10px 30px -8px rgba(56,224,180,.6); }
+  .btn-menta:hover { box-shadow: 0 16px 36px -8px rgba(56,224,180,.75); }
+  .btn-vidrio { background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.22); backdrop-filter: blur(8px); }
+  .btn-noche { background: var(--noche); color: #fff; }
+  .flecha { transition: transform .2s; }
+  .btn:hover .flecha { transform: translateX(4px); }
+
+  /* Navegación */
+  .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background .3s, box-shadow .3s; }
+  .nav.solida { background: rgba(11,21,48,.86); backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(255,255,255,.08); }
+  .nav .envoltura { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { display: flex; align-items: center; gap: 10px; color: #fff; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: -0.04em; }
+  .logo i { width: 30px; height: 30px; border-radius: 10px; background: conic-gradient(from 200deg, var(--menta), var(--lila), var(--coral), var(--menta)); display: grid; place-items: center; }
+  .logo i::after { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--noche); }
+  .enlaces { display: flex; gap: 30px; font-size: 14.5px; color: rgba(255,255,255,.78); }
+  .enlaces a:hover { color: #fff; }
+  .nav .acciones { display: flex; gap: 10px; align-items: center; }
+  .nav .ingresar { color: #fff; font-weight: 600; font-size: 14.5px; padding: 10px 14px; }
+  .nav .btn { padding: 11px 20px; font-size: 14px; }
+
+  /* Héroe */
+  .heroe { position: relative; background: var(--noche); color: #fff; padding: 150px 0 110px; overflow: hidden; isolation: isolate; }
+  .mancha { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .55; z-index: -1; animation: flotar 14s ease-in-out infinite; }
+  .m1 { width: 520px; height: 520px; background: var(--menta-2); top: -120px; right: -80px; }
+  .m2 { width: 420px; height: 420px; background: var(--lila); bottom: -160px; left: 18%; animation-delay: -5s; }
+  .m3 { width: 280px; height: 280px; background: var(--coral); top: 40%; right: 30%; opacity: .35; animation-delay: -9s; }
+  .grano { position: absolute; inset: 0; z-index: -1; background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(to bottom, #000 30%, transparent); }
+  @keyframes flotar { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-20px) scale(1.08); } }
+  .heroe .envoltura { display: grid; grid-template-columns: 1.05fr .95fr; gap: 60px; align-items: center; }
+  .pildora { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 8px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); font-size: 13px; color: rgba(255,255,255,.85); }
+  .pildora b { background: var(--menta); color: var(--noche); border-radius: 999px; padding: 3px 9px; font-size: 11.5px; }
+  .heroe h1 { font-size: clamp(44px, 6.4vw, 82px); line-height: .98; margin: 24px 0 22px; font-weight: 800; }
+  .heroe h1 em { font-style: normal; background: linear-gradient(90deg, var(--menta), #9ff5dc 40%, var(--sol)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .heroe .bajada { font-size: 19px; line-height: 1.55; color: rgba(255,255,255,.74); max-width: 520px; }
+  .heroe .ctas { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+  .confianza { display: flex; gap: 22px; margin-top: 40px; flex-wrap: wrap; font-size: 13.5px; color: rgba(255,255,255,.62); }
+  .confianza span { display: flex; align-items: center; gap: 7px; }
+  .confianza svg { color: var(--menta); }
+
+  /* Teléfono */
+  .escena { position: relative; height: 560px; }
+  .telefono { position: absolute; left: 50%; top: 0; transform: translateX(-50%) rotate(-4deg); width: 290px; height: 560px; border-radius: 46px; background: #050a18; padding: 12px; box-shadow: 0 60px 120px -30px rgba(0,0,0,.7), inset 0 0 0 2px rgba(255,255,255,.08); animation: vaiven 7s ease-in-out infinite; }
+  @keyframes vaiven { 0%,100% { transform: translateX(-50%) rotate(-4deg) translateY(0); } 50% { transform: translateX(-50%) rotate(-3deg) translateY(-12px); } }
+  .pantalla { height: 100%; border-radius: 36px; background: linear-gradient(180deg, #f6f8ff, #eef1fb); overflow: hidden; color: var(--tinta); position: relative; }
+  .muesca { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 96px; height: 26px; border-radius: 20px; background: #050a18; }
+  .app { padding: 52px 18px 18px; display: flex; flex-direction: column; gap: 12px; }
+  .app .hola { font-size: 12px; color: var(--gris); }
+  .app .nombre { font-family: 'Bricolage Grotesque'; font-weight: 700; font-size: 20px; }
+  .saldo { border-radius: 20px; padding: 18px; color: #fff; background: linear-gradient(135deg, var(--noche) 0%, #1c2f6b 60%, #3a2f8f 100%); position: relative; overflow: hidden; }
+  .saldo::after { content: ''; position: absolute; width: 160px; height: 160px; border-radius: 50%; background: var(--menta); opacity: .25; filter: blur(30px); right: -40px; top: -40px; }
+  .saldo small { font-size: 11px; color: rgba(255,255,255,.7); }
+  .saldo strong { display: block; font-family: 'Bricolage Grotesque'; font-size: 32px; margin: 4px 0 2px; }
+  .saldo .sub { font-size: 11.5px; color: var(--menta); }
+  .pasos-mini { background: #fff; border-radius: 16px; padding: 14px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 6px 18px rgba(11,21,48,.06); }
+  .pasos-mini div { display: flex; align-items: center; gap: 10px; font-size: 12.5px; }
+  .pasos-mini i { width: 22px; height: 22px; border-radius: 50%; background: var(--menta); display: grid; place-items: center; color: var(--noche); font-style: normal; font-size: 12px; font-weight: 700; }
+  .pasos-mini i.pend { background: #e7eaf5; color: var(--gris); }
+  .barra { height: 8px; border-radius: 99px; background: #e7eaf5; overflow: hidden; }
+  .barra b { display: block; height: 100%; width: 72%; border-radius: 99px; background: linear-gradient(90deg, var(--menta), var(--lila)); animation: llenar 3s ease-out both; }
+  @keyframes llenar { from { width: 0; } }
+
+  .flotante { position: absolute; background: #fff; color: var(--tinta); border-radius: 18px; padding: 14px 16px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.55); display: flex; gap: 12px; align-items: center; font-size: 13px; animation: aparecer .9s cubic-bezier(.2,.9,.3,1.3) both, vaiven2 6s ease-in-out infinite; }
+  @keyframes aparecer { from { opacity: 0; transform: translateY(20px) scale(.9); } }
+  @keyframes vaiven2 { 0%,100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+  .flotante .ico { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0; }
+  .flotante b { display: block; font-size: 13.5px; }
+  .flotante small { color: var(--gris); font-size: 12px; }
+  .f1 { top: 150px; left: -50px; animation-delay: .5s, 0s; }
+  .f2 { bottom: 110px; right: -40px; animation-delay: 1s, -2s; max-width: 250px; }
+  .f3 { bottom: 20px; left: 0; animation-delay: 1.5s, -4s; }
+  .wa { background: #dcfce7; color: #15803d; }
+  .sat { background: #ede9fe; color: #6d28d9; }
+  .rug { background: #ffedd5; color: #c2410c; }
+
+  /* Cinta */
+  .cinta { background: var(--menta); color: var(--noche); overflow: hidden; padding: 16px 0; transform: rotate(-1.2deg); margin: -18px -10px 0; position: relative; z-index: 2; }
+  .cinta .pista { display: flex; gap: 46px; width: max-content; animation: correr 32s linear infinite; font-family: 'Bricolage Grotesque'; font-weight: 700; font-size: 20px; white-space: nowrap; }
+  .cinta span::after { content: '✦'; margin-left: 46px; }
+  @keyframes correr { to { transform: translateX(-50%); } }
+
+  section { padding: 120px 0; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--menta-2); }
+  .titulo { font-size: clamp(34px, 4.4vw, 58px); line-height: 1.02; font-weight: 800; margin-top: 14px; }
+  .intro { font-size: 18px; color: var(--gris); line-height: 1.6; max-width: 620px; margin-top: 18px; }
+
+  /* Espera */
+  .espera { background: var(--nube); }
+  .comparacion { margin-top: 56px; display: grid; gap: 22px; }
+  .fila { background: #fff; border-radius: var(--radio); padding: 26px 28px; display: grid; grid-template-columns: 190px 1fr 150px; gap: 24px; align-items: center; box-shadow: 0 1px 0 rgba(11,21,48,.06); }
+  .fila h3 { font-size: 20px; }
+  .fila p { font-size: 13.5px; color: var(--gris); margin-top: 4px; }
+  .pista-tiempo { position: relative; height: 18px; border-radius: 99px; background: #e8ebf5; }
+  .pista-tiempo b { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 99px; }
+  .lenta b { width: 100%; background: repeating-linear-gradient(135deg, #c8cee0 0 10px, #d7dcea 10px 20px); }
+  .rapida b { width: 3%; min-width: 34px; background: linear-gradient(90deg, var(--menta), var(--lila)); box-shadow: 0 0 22px rgba(56,224,180,.8); }
+  .marcas-t { display: flex; justify-content: space-between; font-size: 12px; color: var(--gris); margin-top: 10px; }
+  .fila .cifra { text-align: right; font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 40px; line-height: 1; }
+  .fila .cifra small { display: block; font-family: 'Inter'; font-size: 12.5px; font-weight: 500; color: var(--gris); margin-top: 6px; }
+  .rapida-fila { background: var(--noche); color: #fff; }
+  .rapida-fila p, .rapida-fila .cifra small, .rapida-fila .marcas-t { color: rgba(255,255,255,.65); }
+  .rapida-fila .pista-tiempo { background: rgba(255,255,255,.1); }
+  .rapida-fila .cifra { color: var(--menta); }
+
+  /* Cómo funciona */
+  .pasos { margin-top: 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; counter-reset: paso; }
+  .paso { position: relative; border-radius: 28px; padding: 34px 30px 30px; overflow: hidden; min-height: 330px; display: flex; flex-direction: column; justify-content: space-between; transition: transform .3s; }
+  .paso:hover { transform: translateY(-6px) rotate(-.4deg); }
+  .paso:nth-child(1) { background: #e9fbf5; }
+  .paso:nth-child(2) { background: #efedff; }
+  .paso:nth-child(3) { background: var(--noche); color: #fff; }
+  .paso .num { font-family: 'Bricolage Grotesque'; font-weight: 800; font-size: 120px; line-height: .8; letter-spacing: -0.06em; opacity: .12; position: absolute; right: 18px; top: 18px; }
+  .paso .ico-grande { width: 64px; height: 64px; border-radius: 20px; display: grid; place-items: center; }
+  .paso:nth-child(1) .ico-grande { background: var(--menta); color: var(--noche); }
+  .paso:nth-child(2) .ico-grande { background: var(--lila); color: #fff; }
+  .paso:nth-child(3) .ico-grande { background: var(--sol); color: var(--noche); }
+  .paso h3 { font-size: 28px; margin-top: 26px; line-height: 1.05; }
+  .paso p { font-size: 15px; line-height: 1.55; margin-top: 12px; color: var(--gris); }
+  .paso:nth-child(3) p { color: rgba(255,255,255,.7); }
+  .chip { display: inline-flex; margin-top: 18px; font-size: 12.5px; font-weight: 600; padding: 7px 12px; border-radius: 999px; background: rgba(11,21,48,.07); align-self: flex-start; }
+  .paso:nth-child(3) .chip { background: rgba(255,255,255,.1); color: var(--menta); }
+
+  /* Calculadora */
+  .calc { background: linear-gradient(160deg, var(--noche) 0%, #17245a 55%, #2d2275 100%); color: #fff; position: relative; overflow: hidden; }
+  .calc .mancha { opacity: .3; }
+  .calc .intro { color: rgba(255,255,255,.7); }
+  .calc-caja { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .panel { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 28px; padding: 34px; backdrop-filter: blur(10px); }
+  .control + .control { margin-top: 34px; }
+  .control label { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; color: rgba(255,255,255,.75); }
+  .control output { font-family: 'Bricolage Grotesque'; font-weight: 700; font-size: 28px; color: #fff; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; border-radius: 99px; margin-top: 18px; background: linear-gradient(90deg, var(--menta) var(--p, 30%), rgba(255,255,255,.15) var(--p, 30%)); outline: none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: #fff; border: 6px solid var(--menta); cursor: grab; box-shadow: 0 6px 16px rgba(0,0,0,.35); }
+  input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 6px solid var(--menta); cursor: grab; }
+  .opciones { display: flex; gap: 8px; margin-top: 16px; }
+  .opciones button { flex: 1; padding: 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,.18); background: transparent; color: rgba(255,255,255,.8); font: 600 13.5px 'Inter'; cursor: pointer; transition: all .2s; }
+  .opciones button.activo { background: #fff; color: var(--noche); border-color: #fff; }
+  .resultado { display: flex; flex-direction: column; gap: 18px; }
+  .hoy { background: var(--menta); color: var(--noche); border-radius: 22px; padding: 26px; }
+  .hoy small { font-size: 13px; font-weight: 600; opacity: .75; }
+  .hoy strong { display: block; font-family: 'Bricolage Grotesque'; font-size: clamp(44px, 5vw, 64px); line-height: 1; margin: 8px 0 6px; letter-spacing: -0.03em; }
+  .hoy span { font-size: 13.5px; font-weight: 500; }
+  .desglose { display: grid; gap: 0; }
+  .desglose div { display: flex; justify-content: space-between; padding: 12px 2px; border-bottom: 1px dashed rgba(255,255,255,.14); font-size: 14.5px; color: rgba(255,255,255,.75); }
+  .desglose div b { color: #fff; font-variant-numeric: tabular-nums; }
+  .desglose .menos b { color: #ffb4a2; }
+  .desglose .total { border-bottom: 0; font-size: 16px; color: #fff; }
+  .nota { font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+  /* Para quién */
+  .quien { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 60px; }
+  .tarjeta-q { border-radius: 30px; padding: 40px; position: relative; overflow: hidden; min-height: 420px; display: flex; flex-direction: column; }
+  .t-influ { background: linear-gradient(150deg, #fff4ec, #ffe3d6); }
+  .t-agencia { background: linear-gradient(150deg, #eef3ff, #e1e6ff); }
+  .tarjeta-q .etiqueta { align-self: flex-start; font-size: 12.5px; font-weight: 700; padding: 7px 13px; border-radius: 999px; background: var(--noche); color: #fff; }
+  .tarjeta-q h3 { font-size: 38px; line-height: 1.02; margin: 22px 0 14px; }
+  .tarjeta-q ul { list-style: none; padding: 0; margin: 12px 0 30px; display: grid; gap: 14px; }
+  .tarjeta-q li { display: flex; gap: 12px; font-size: 15.5px; line-height: 1.45; }
+  .tarjeta-q li::before { content: ''; flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; margin-top: 1px; background: var(--noche) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338e0b4' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/13px no-repeat; }
+  .tarjeta-q .btn { margin-top: auto; align-self: flex-start; }
+  .deco { position: absolute; right: -40px; bottom: -40px; width: 200px; height: 200px; border-radius: 50%; opacity: .45; }
+  .t-influ .deco { background: radial-gradient(circle, var(--coral), transparent 70%); }
+  .t-agencia .deco { background: radial-gradient(circle, var(--lila), transparent 70%); }
+
+  /* Seguridad */
+  .seguridad { background: var(--nube); }
+  .sellos { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .sello { background: #fff; border-radius: 24px; padding: 28px 24px; transition: transform .3s, box-shadow .3s; }
+  .sello:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -24px rgba(11,21,48,.3); }
+  .sello .ico { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; background: var(--noche); color: var(--menta); }
+  .sello h3 { font-size: 19px; margin-top: 20px; }
+  .sello p { font-size: 14px; color: var(--gris); line-height: 1.55; margin-top: 8px; }
+
+  /* Preguntas */
+  .preguntas { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: start; }
+  details { border-bottom: 1px solid #e4e7f1; padding: 22px 0; }
+  details:first-child { border-top: 1px solid #e4e7f1; }
+  summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; font-family: 'Bricolage Grotesque'; font-weight: 700; font-size: 21px; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--nube); display: grid; place-items: center; font-size: 22px; font-weight: 500; transition: transform .25s, background .25s; }
+  details[open] summary::after { transform: rotate(45deg); background: var(--menta); }
+  details p { font-size: 16px; color: var(--gris); line-height: 1.6; margin-top: 12px; max-width: 620px; }
+
+  /* Cierre */
+  .cierre { padding: 0 0 110px; }
+  .cierre-caja { border-radius: 40px; padding: 80px 60px; text-align: center; color: #fff; position: relative; overflow: hidden; isolation: isolate; background: var(--noche); }
+  .cierre-caja .mancha { opacity: .6; }
+  .cierre-caja h2 { font-size: clamp(40px, 5.6vw, 76px); line-height: .98; font-weight: 800; }
+  .cierre-caja p { font-size: 19px; color: rgba(255,255,255,.75); margin: 20px auto 36px; max-width: 540px; }
+  .cierre-caja .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  footer { border-top: 1px solid #e8ebf3; padding: 36px 0; font-size: 13.5px; color: var(--gris); }
+  footer .envoltura { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+  footer .logo { color: var(--noche); font-size: 22px; }
+  footer .logo i::after { background: #fff; }
+
+  /* Aparición al hacer scroll */
+  .revelar { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+  .revelar.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 980px) {
+    .heroe .envoltura, .calc-caja, .quien, .preguntas { grid-template-columns: 1fr; }
+    .escena { height: 520px; margin-top: 20px; }
+    .pasos, .sellos { grid-template-columns: 1fr 1fr; }
+    .enlaces { display: none; }
+    .fila { grid-template-columns: 1fr; gap: 14px; }
+    .fila .cifra { text-align: left; }
+  }
+  @media (max-width: 620px) {
+    section { padding: 84px 0; }
+    .heroe { padding: 120px 0 80px; }
+    .pasos, .sellos { grid-template-columns: 1fr; }
+    .paso { min-height: 0; }
+    .paso .ico-grande { margin-bottom: 8px; }
+    .nav .ingresar { display: none; }
+    .f1 { left: -6px; } .f2 { right: -6px; } .f3 { left: 6px; }
+    .telefono { width: 260px; height: 510px; }
+    .tarjeta-q { padding: 30px; min-height: 0; }
+    .panel { padding: 24px; }
+    .cierre-caja { padding: 60px 24px; border-radius: 30px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .revelar { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="envoltura">
+    <a href="#" class="logo"><i></i>influ</a>
+    <nav class="enlaces">
+      <a href="#como">Cómo funciona</a>
+      <a href="#calculadora">Calculadora</a>
+      <a href="#quien">Influencers y agencias</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <div class="acciones">
+      <a class="ingresar" href="https://influ-erp.web.app/login">Ingresar</a>
+      <a class="btn btn-menta" href="https://influ-erp.web.app/registro">Crear cuenta</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Héroe -->
+  <div class="heroe">
+    <div class="mancha m1"></div><div class="mancha m2"></div><div class="mancha m3"></div><div class="grano"></div>
+    <div class="envoltura">
+      <div>
+        <span class="pildora"><b>Nuevo</b> Adelanto de pago para colaboraciones</span>
+        <h1>Ya cerraste el trato. <em>Cobra en 48 horas,</em> no en 90 días.</h1>
+        <p class="bajada">Influ adelanta el 80% de la factura de tu colaboración con una marca. Tú sigues negociando igual; nosotros esperamos a la marca por ti.</p>
+        <div class="ctas">
+          <a class="btn btn-menta" href="https://influ-erp.web.app/registro?tipo=talento">Soy influencer <span class="flecha">→</span></a>
+          <a class="btn btn-vidrio" href="https://influ-erp.web.app/registro?tipo=agencia">Soy agencia</a>
+        </div>
+        <div class="confianza">
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>CFDI validado ante el SAT</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Pago por SPEI</span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>Firma con DocuSign</span>
+        </div>
+      </div>
+
+      <div class="escena" aria-hidden="true">
+        <div class="telefono">
+          <div class="pantalla">
+            <div class="muesca"></div>
+            <div class="app">
+              <span class="hola">Hola,</span>
+              <span class="nombre">Valeria ✨</span>
+              <div class="saldo">
+                <small>Adelanto liberado</small>
+                <strong>$64,000</strong>
+                <span class="sub">80% de tu colaboración · SPEI</span>
+              </div>
+              <div class="pasos-mini">
+                <div><i>✓</i> Factura y contrato</div>
+                <div><i>✓</i> Validación</div>
+                <div><i>✓</i> Firma</div>
+                <div><i>✓</i> Evidencia</div>
+                <div><i>✓</i> Adelanto</div>
+                <div><i class="pend">6</i> La marca paga · 32 días</div>
+                <div class="barra"><b></b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flotante f1">
+          <span class="ico sat"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <div><b>CFDI validado</b><small>RFC, UUID y lista 69-B</small></div>
+        </div>
+        <div class="flotante f2">
+          <span class="ico wa"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7a11.4 11.4 0 01-4.5-4c-.4-.5-1-1.5-1-2.8s.7-2 .9-2.2c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c0 .2.1.4 0 .6l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></span>
+          <div><b>WhatsApp de Influ</b><small>Enviamos tu adelanto de $64,000. Llega en minutos.</small></div>
+        </div>
+        <div class="flotante f3">
+          <span class="ico rug"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span>
+          <div><b>Cesión inscrita en el RUG</b><small>Nadie cobra tu factura dos veces</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cinta" aria-hidden="true">
+    <div class="pista">
+      <span>80% en el acto</span><span>Pago por SPEI en 24–48 horas</span><span>Sin cambiar cómo negocias</span><span>La marca paga en sus plazos</span><span>El 20% restante no se pierde</span><span>Para influencers y agencias</span>
+      <span>80% en el acto</span><span>Pago por SPEI en 24–48 horas</span><span>Sin cambiar cómo negocias</span><span>La marca paga en sus plazos</span><span>El 20% restante no se pierde</span><span>Para influencers y agencias</span>
+    </div>
+  </div>
+
+  <!-- La espera -->
+  <section class="espera">
+    <div class="envoltura">
+      <div class="revelar">
+        <span class="eyebrow">El problema</span>
+        <h2 class="titulo">Publicas hoy.<br />La marca te paga en tres meses.</h2>
+        <p class="intro">Las marcas pagan a 30, 60 o 90 días. Mientras tanto, el trabajo ya está hecho y tus gastos no esperan.</p>
+      </div>
+      <div class="comparacion">
+        <div class="fila lenta revelar">
+          <div><h3>Sin Influ</h3><p>Esperas el plazo completo de la marca</p></div>
+          <div><div class="pista-tiempo"><b></b></div><div class="marcas-t"><span>Día 1 · publicas</span><span>Día 30</span><span>Día 60</span><span>Día 90 · cobras</span></div></div>
+          <div class="cifra">90<small>días de espera</small></div>
+        </div>
+        <div class="fila rapida rapida-fila revelar">
+          <div><h3>Con Influ</h3><p>Recibes el 80% en cuanto se aprueba</p></div>
+          <div><div class="pista-tiempo"><b></b></div><div class="marcas-t"><span>Día 1 · pides</span><span>48 h · cobras</span><span></span><span>La marca paga a Influ</span></div></div>
+          <div class="cifra">48 h<small>para tener tu dinero</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section id="como">
+    <div class="envoltura">
+      <div class="revelar">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2 class="titulo">Tres pasos. Cero trámites raros.</h2>
+      </div>
+      <div class="pasos">
+        <article class="paso revelar">
+          <span class="num">01</span>
+          <div>
+            <div class="ico-grande"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3-3 3 3"/></svg></div>
+            <h3>Sube tu factura y tu contrato</h3>
+            <p>El CFDI de la colaboración y el contrato firmado con la marca. Toma menos de cinco minutos.</p>
+          </div>
+          <span class="chip">CFDI + contrato</span>
+        </article>
+        <article class="paso revelar">
+          <span class="num">02</span>
+          <div>
+            <div class="ico-grande"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+            <h3>Validamos y firmas una sola vez</h3>
+            <p>Validamos tu CFDI con el SAT y nuestra IA lee el contrato. El equipo lo aprueba y firmas un único documento por DocuSign.</p>
+          </div>
+          <span class="chip">SAT · IA · DocuSign</span>
+        </article>
+        <article class="paso revelar">
+          <span class="num">03</span>
+          <div>
+            <div class="ico-grande"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <h3>Recibes el 80% por SPEI</h3>
+            <p>Pegas los links de tus publicaciones y te avisamos por WhatsApp cuando sale el pago. El 20% restante te llega cuando la marca paga.</p>
+          </div>
+          <span class="chip">24–48 horas</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculadora -->
+  <section class="calc" id="calculadora">
+    <div class="mancha m1"></div><div class="mancha m2"></div>
+    <div class="envoltura">
+      <div class="revelar">
+        <span class="eyebrow" style="color: var(--menta)">Calculadora</span>
+        <h2 class="titulo">¿Cuánto recibes hoy?</h2>
+        <p class="intro">Mueve el monto de tu factura y el plazo de pago de la marca. Sin letras chiquitas: 9% fijo + 1.5% mensual sobre lo que te adelantamos.</p>
+      </div>
+      <div class="calc-caja revelar">
+        <div class="panel">
+          <div class="control">
+            <label for="monto">Monto de tu factura <output id="montoTxt">$80,000</output></label>
+            <input type="range" id="monto" min="10000" max="1500000" step="5000" value="80000" />
+          </div>
+          <div class="control">
+            <label for="plazo">La marca te paga en <output id="plazoTxt">60 días</output></label>
+            <input type="range" id="plazo" min="30" max="120" step="15" value="60" />
+          </div>
+          <div class="control">
+            <label>¿Cuánto de la campaña está cumplido?</label>
+            <div class="opciones" id="alcance">
+              <button type="button" class="activo" data-pct="100">Completa</button>
+              <button type="button" data-pct="50">La mitad</button>
+            </div>
+          </div>
+        </div>
+        <div class="resultado">
+          <div class="hoy">
+            <small>Recibes en 24–48 horas</small>
+            <strong id="hoy">$64,000</strong>
+            <span id="hoyNota">80% de tu factura, por SPEI</span>
+          </div>
+          <div class="panel desglose">
+            <div><span id="retTxt">Resto de tu factura (20%)</span><b id="retenido">$16,000</b></div>
+            <div class="menos"><span>Comisión fija (9%)</span><b id="fijo">−$5,760</b></div>
+            <div class="menos"><span id="varTxt">Tasa variable (1.5% × 2 meses)</span><b id="variable">−$1,920</b></div>
+            <div class="total"><span>Te llega cuando la marca paga</span><b id="neto">$8,320</b></div>
+            <p class="nota" style="margin-top:10px">Estimación. Los meses se cuentan desde el adelanto hasta que la marca paga la factura completa a Influ.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Para quién -->
+  <section id="quien">
+    <div class="envoltura">
+      <div class="revelar">
+        <span class="eyebrow">Para quién es</span>
+        <h2 class="titulo">Para quien crea<br />y para quien representa.</h2>
+      </div>
+      <div class="quien">
+        <article class="tarjeta-q t-influ revelar">
+          <span class="etiqueta">Influencers y talento</span>
+          <h3>Cobra lo que ya ganaste.</h3>
+          <ul>
+            <li>Recibes el mismo monto que acordaste con la marca, sin renegociar nada.</li>
+            <li>Te registras con tus handles, sin conectar tus redes. Influ preaprueba tu cuenta y, si tienes agencia, ella confirma que te representa.</li>
+            <li>Sigues cada adelanto paso a paso desde tu panel.</li>
+          </ul>
+          <a class="btn btn-noche" href="https://influ-erp.web.app/registro?tipo=talento">Crear mi cuenta <span class="flecha">→</span></a>
+          <div class="deco"></div>
+        </article>
+        <article class="tarjeta-q t-agencia revelar">
+          <span class="etiqueta">Agencias de talento</span>
+          <h3>Retén a tu talento sin poner capital.</h3>
+          <ul>
+            <li>Pides adelantos para cualquiera de tus talentos confirmados.</li>
+            <li>Un diferencial real para reclutar frente a otras agencias.</li>
+            <li>Preaprobamos tu agencia una vez, con su folio mercantil, y eliges a quién avisamos de cada pago.</li>
+          </ul>
+          <a class="btn btn-noche" href="https://influ-erp.web.app/registro?tipo=agencia">Registrar mi agencia <span class="flecha">→</span></a>
+          <div class="deco"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seguridad -->
+  <section class="seguridad">
+    <div class="envoltura">
+      <div class="revelar">
+        <span class="eyebrow">Hecho en serio</span>
+        <h2 class="titulo">Cada factura, verificada.</h2>
+        <p class="intro">Rápido no significa descuidado. Cada adelanto pasa por los mismos controles antes de que salga un peso.</p>
+      </div>
+      <div class="sellos">
+        <div class="sello revelar"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M9 14l2 2 4-4"/></svg></div><h3>CFDI y contrato</h3><p>Validamos el CFDI con el SAT y una IA lee el contrato, con cada dato citado a su cláusula.</p></div>
+        <div class="sello revelar"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg></div><h3>Lista 69-B</h3><p>Revisamos que la marca no aparezca en la lista del SAT.</p></div>
+        <div class="sello revelar"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l3-1 12-12-2-2L4 18z"/><path d="M14 6l2 2"/><path d="M13 21h8"/></svg></div><h3>Firma y cesión notificada</h3><p>Un solo documento por DocuSign; notificamos la cesión al área de pagos de la marca.</p></div>
+        <div class="sello revelar"><div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><h3>Registro en el RUG</h3><p>Inscribimos la cesión para que nadie cobre la factura dos veces.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas -->
+  <section id="preguntas">
+    <div class="envoltura preguntas">
+      <div class="revelar">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 class="titulo">Lo que todos preguntan.</h2>
+      </div>
+      <div class="revelar">
+        <details open><summary>¿Cambia algo para la marca?</summary><p>Solo a quién le paga: la marca paga la factura completa a Influ en sus plazos habituales, de 30 a 120 días. Nosotros le notificamos la cesión a su área de pagos; tú no tienes que hacer nada.</p></details>
+        <details><summary>¿Necesito estar en una agencia?</summary><p>No. Puedes registrarte como independiente. Si tienes agencia, la eliges al registrarte y ella confirma que te representa. En los dos casos el equipo de Influ preaprueba tu cuenta antes del primer adelanto.</p></details>
+        <details><summary>¿Cuánto tarda el adelanto?</summary><p>Entre 24 y 48 horas desde que tu solicitud queda aprobada y firmas el documento.</p></details>
+        <details><summary>¿Qué pasa con el 20% restante?</summary><p>No se pierde. Cuando la marca paga, te liquidamos ese 20% (o todo lo que no se adelantó, si pediste sobre una parte de la campaña) menos la comisión fija (9%) y la variable (1.5% por mes), calculadas sobre lo que te adelantamos.</p></details>
+        <details><summary>¿Y si solo he cumplido parte de la campaña?</summary><p>Te adelantamos el 80% sobre la porción ya cumplida según el contrato. El resto de la campaña sigue su curso normal.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cierre -->
+  <div class="cierre">
+    <div class="envoltura">
+      <div class="cierre-caja revelar">
+        <div class="mancha m1"></div><div class="mancha m2"></div><div class="mancha m3"></div>
+        <h2>Tu próxima colaboración<br />ya puede estar pagada.</h2>
+        <p>Crea tu cuenta en minutos y pide tu primer adelanto con la factura que ya tienes.</p>
+        <div class="ctas">
+          <a class="btn btn-menta" href="https://influ-erp.web.app/registro?tipo=talento">Soy influencer <span class="flecha">→</span></a>
+          <a class="btn btn-vidrio" href="https://influ-erp.web.app/registro?tipo=agencia">Soy agencia</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="envoltura">
+    <span class="logo"><i></i>influ</span>
+    <span>Adelanto de pago para colaboraciones de influencers · México</span>
+    <a href="https://influ-erp.web.app/login">Ingresar</a>
+  </div>
+</footer>
+
+<script>
+  // Navegación sólida al bajar
+  const nav = document.getElementById('nav');
+  const alScroll = () => nav.classList.toggle('solida', window.scrollY > 40);
+  window.addEventListener('scroll', alScroll, { passive: true }); alScroll();
+
+  // Aparición al entrar en pantalla
+  // Se revisa la posición en cada scroll: funciona aunque el navegador no dispare observadores.
+  const pendientes = [...document.querySelectorAll('.revelar')];
+  pendientes.forEach((el, i) => { el.style.transitionDelay = `${(i % 4) * 80}ms`; });
+  const revelar = () => {
+    for (let i = pendientes.length - 1; i >= 0; i--) {
+      if (pendientes[i].getBoundingClientRect().top < window.innerHeight * 0.92) { pendientes[i].classList.add('visible'); pendientes.splice(i, 1); }
+    }
+  };
+  window.addEventListener('scroll', revelar, { passive: true }); window.addEventListener('resize', revelar); revelar();
+
+  // Calculadora: 80% en el acto; 9% fijo + 1.5% mensual sobre el monto adelantado (flujo de pantallas, 22 oct)
+  const $ = (id) => document.getElementById(id);
+  const pesos = (n) => '$' + Math.round(n).toLocaleString('es-MX');
+  let pct = 100;
+  const pintarRango = (r) => r.style.setProperty('--p', ((r.value - r.min) / (r.max - r.min) * 100) + '%');
+  function calcular() {
+    const monto = +$('monto').value, plazo = +$('plazo').value;
+    const meses = Math.max(1, Math.ceil(plazo / 30));
+    const base = monto * pct / 100;
+    const hoy = base * 0.8;
+    const retenido = monto - hoy;
+    const fijo = hoy * 0.09, variable = hoy * 0.015 * meses;
+    const neto = Math.max(0, retenido - fijo - variable);
+    $('montoTxt').textContent = pesos(monto);
+    $('plazoTxt').textContent = plazo + ' días';
+    $('hoy').textContent = pesos(hoy);
+    $('hoyNota').textContent = pct === 100 ? '80% de tu factura, por SPEI' : '80% de la mitad ya cumplida, por SPEI';
+    $('retTxt').textContent = pct === 100 ? 'Resto de tu factura (20%)' : 'Resto de tu factura (20% + la mitad por cumplir)';
+    $('retenido').textContent = pesos(retenido);
+    $('fijo').textContent = '−' + pesos(fijo);
+    $('variable').textContent = '−' + pesos(variable);
+    $('varTxt').textContent = `Tasa variable (1.5% × ${meses} ${meses === 1 ? 'mes' : 'meses'})`;
+    $('neto').textContent = pesos(neto);
+    pintarRango($('monto')); pintarRango($('plazo'));
+  }
+  $('monto').addEventListener('input', calcular);
+  $('plazo').addEventListener('input', calcular);
+  document.querySelectorAll('#alcance button').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('#alcance button').forEach((x) => x.classList.remove('activo'));
+    b.classList.add('activo'); pct = +b.dataset.pct; calcular();
+  }));
+  calcular();
+</script>
+</body>
+</html>

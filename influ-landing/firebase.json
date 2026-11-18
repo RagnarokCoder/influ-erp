@@ -1,0 +1,8 @@
+{
+  "hosting": {
+    "site": "influ-landing",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*"],
+    "cleanUrls": true
+  }
+}
